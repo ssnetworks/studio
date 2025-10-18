@@ -13,6 +13,7 @@ const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
   
   useEffect(() => {
+    let timer: NodeJS.Timeout;
     const targetDate = new Date("2025-10-13T19:00:00+05:30");
     
     const updateCountdown = () => {
@@ -41,7 +42,7 @@ const Countdown = () => {
     }
 
     updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
+    timer = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(timer);
   }, []);
